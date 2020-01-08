@@ -1,0 +1,14 @@
+diff --git a/drivers/net/virtio_net.c b/drivers/net/virtio_net.c
+index 4cfceb789eea..41aaed151b42 100644
+--- a/drivers/net/virtio_net.c
++++ b/drivers/net/virtio_net.c
+@@ -2286,6 +2286,9 @@ static void virtnet_init_settings(struct net_device *dev)
+ 
+ 	vi->speed = SPEED_UNKNOWN;
+ 	vi->duplex = DUPLEX_UNKNOWN;
++
++	/* Enforcing STANDBY flag to true */
++	__virtio_set_bit(vi->vdev, VIRTIO_NET_F_STANDBY);
+ }
+ 
+ static void virtnet_update_settings(struct virtnet_info *vi)
